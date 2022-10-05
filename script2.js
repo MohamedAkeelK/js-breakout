@@ -1,12 +1,12 @@
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
+const PLAYER_WIDTH = 50;
 
 const game = document.querySelector(".game");
 
 // create player
 let spaceShip = document.createElement("img");
 spaceShip.classList.add(".player");
-
 class Game {
   constructor() {
     this.player = spaceShip;
@@ -16,6 +16,7 @@ class Game {
     this.move_right = false;
     this.enemies = [];
     this.init_player();
+    this.createEnemies();
   }
   init_player() {
     this.player.src =
@@ -38,11 +39,39 @@ class Game {
       }
     }
     if (this.move_right) {
-      if (this.x_pos <= 320) {
+      if (this.x_pos <= 370) {
         this.x_pos += 5;
         this.setPosition(spaceShip);
       }
     }
+  }
+  createEnemies() {
+    // let enemy = document.createElement("img");
+    // enemy.classList.add("enemy");
+    // enemy.src =
+    //   "https://raw.githubusercontent.com/codewmax/space-invaders/master/img/ufo.png";
+    // enemy.style.width = "50px";
+    // enemy.style.height = "50px";
+    // enemy.style.position = "absolute";
+    // enemy.style.left = "375px";
+    // enemy.style.top = "300px";
+    // game.append(enemy);
+    let factor = 50;
+    for (let i = 0; i < 48``; i++) {
+      let enemy = document.createElement("img");
+      enemy.classList.add("enemy");
+      enemy.src =
+        "https://raw.githubusercontent.com/codewmax/space-invaders/master/img/ufo.png";
+      enemy.style.width = "50px";
+      enemy.style.height = "50px";
+      // enemy.style.position = "absolute";
+      enemy.style.left = -20 + factor + "px";
+      enemy.style.top = "300px";
+      game.append(enemy);
+      factor += 50;
+    }
+
+    // console.log(enemy);
   }
 }
 

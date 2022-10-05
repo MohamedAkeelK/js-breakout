@@ -50,6 +50,10 @@ header {
   z-index: -2;
 }
 
+.enemy {
+  
+}
+
 @keyframes scroll-background {
   from {
     background-position-y: 0px;

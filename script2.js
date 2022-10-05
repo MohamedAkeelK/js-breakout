@@ -32,12 +32,16 @@ class Game {
   }
   updatePlayer() {
     if (this.move_left) {
-      this.x_pos -= 5;
-      this.setPosition(spaceShip);
+      if (this.x_pos >= -370) {
+        this.x_pos -= 5;
+        this.setPosition(spaceShip);
+      }
     }
     if (this.move_right) {
-      this.x_pos += 5;
-      this.setPosition(spaceShip);
+      if (this.x_pos <= 320) {
+        this.x_pos += 5;
+        this.setPosition(spaceShip);
+      }
     }
   }
 }

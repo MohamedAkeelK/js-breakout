@@ -1,18 +1,11 @@
-const game = document.querySelector(".game");
-let spaceShip = document.createElement("img");
-spaceShip.classList.add(".player");
-spaceShip.src =
-  "https://raw.githubusercontent.com/codewmax/space-invaders/master/img/spaceship.png";
-spaceShip.style.width = "50px";
-spaceShip.style.height = "50px";
-spaceShip.style.position = "absolute";
-spaceShip.style.left = "375px";
-spaceShip.style.top = "500px";
-
-game.append(spaceShip);
-
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
+
+const game = document.querySelector(".game");
+
+// create player
+let spaceShip = document.createElement("img");
+spaceShip.classList.add(".player");
 
 class Game {
   constructor() {
@@ -21,19 +14,29 @@ class Game {
     this.y_pos = 0;
     this.move_left = false;
     this.move_right = false;
+    this.enemies = [];
+    this.init_player();
+  }
+  init_player() {
+    this.player.src =
+      "https://raw.githubusercontent.com/codewmax/space-invaders/master/img/spaceship.png";
+    this.player.style.width = "50px";
+    this.player.style.height = "50px";
+    this.player.style.position = "absolute";
+    this.player.style.left = "375px";
+    this.player.style.top = "500px";
+    game.append(this.player);
   }
   setPosition(ship) {
-    // console.log(ship);
     ship.style.transform = `translate(${this.x_pos}px, ${this.y_pos}px)`;
   }
-
   updatePlayer() {
     if (this.move_left) {
-      this.x_pos -= 3;
+      this.x_pos -= 5;
       this.setPosition(spaceShip);
     }
     if (this.move_right) {
-      this.x_pos += 3;
+      this.x_pos += 5;
       this.setPosition(spaceShip);
     }
   }
@@ -45,6 +48,7 @@ function update() {
   window.requestAnimationFrame(update);
 }
 
+// Event Listeners
 window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") {
     console.log("left key");
@@ -65,6 +69,7 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
+// Create a new game
 let game1 = new Game();
 update();
 // console.log(game1);

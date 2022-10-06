@@ -1,6 +1,15 @@
-.ship 
-{
+.ship {
   width: 50px;
   height: 50px;
   position: fixed;
+}
+
+.entity {
+  position: fixed;
+}
+
+.bullet {
+  background-color: red;
+  width: 4px;
+  height: 4px;
 }

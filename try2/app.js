@@ -1,5 +1,6 @@
 import Ship from "./Ship.js";
-import Bullet from "./Bullet.js";
+// import Bullet from "./Bullet.js";
+
 const keys = {
   a: false,
   d: false,
@@ -8,7 +9,6 @@ const keys = {
 
 document.addEventListener("keydown", (e) => {
   keys[e.key] = true;
-  console.log(keys.a);
 });
 
 document.addEventListener("keyup", (e) => {
@@ -26,6 +26,7 @@ const update = () => {
   }
   if (keys[" "]) {
     // create a bullet
+    console.log(ship);
   }
 };
 

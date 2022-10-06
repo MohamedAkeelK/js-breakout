@@ -50,8 +50,16 @@ header {
   z-index: -2;
 }
 
+.bullet {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+
+}
+
 .enemy {
-  
+
 }
 
 @keyframes scroll-background {

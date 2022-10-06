@@ -1,3 +1,5 @@
+// entity creates an element and 
+
 export default class Entity {
   constructor({ tag = "div", className = "" } = {}) {
     this.el = document.createElement(tag);

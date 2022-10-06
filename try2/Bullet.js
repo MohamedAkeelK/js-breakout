@@ -1,11 +1,14 @@
-import { Entity } from "./Entity";
+import Entity from "./Entity.js";
 
 export default class Bullet extends Entity {
-  constructor() {
+  constructor({ x, y }) {
     super({ className: "bullet" });
     this.SPEED = 4;
+    this.setX(x + 23);
+    this.setY(y - 5);
+  }
 
-    this.setX(window.innerWidth / 2);
-    this.setY(window.innerHeight - 80);
+  update() {
+    this.setY(this.y - this.SPEED);
   }
 }

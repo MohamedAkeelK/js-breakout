@@ -1,4 +1,7 @@
-// entity creates an element and
+// entity creates an element and gives a classname
+// appends that element to the body
+// sets x and y values for dom element and local vars
+// removes and element
 
 export default class Entity {
   constructor({ tag = "div", className = "" } = {}) {

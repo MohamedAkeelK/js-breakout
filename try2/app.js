@@ -1,3 +1,4 @@
+// CLASSES
 import Ship from "./Ship.js";
 import Bullet from "./Bullet.js";
 import Alien from "./Alien.js";
@@ -18,10 +19,9 @@ document.addEventListener("keyup", (e) => {
   keys[e.key] = false;
 });
 
-// NEW SHIP INSTANCE
+// GAME STUFF ...
 const ship = new Ship();
 const bullets = [];
-
 const aliens = [];
 
 for (let row = 0; row < 2; row++) {
@@ -34,6 +34,7 @@ for (let row = 0; row < 2; row++) {
   }
 }
 
+// DETERMINE RIGHT AND LEFT MOST ALIENS
 const getLeftMostAlien = () => {
   return aliens.reduce((minimumAlien, currentAlien) => {
     return currentAlien.x < minimumAlien.x ? currentAlien : minimumAlien;
@@ -46,6 +47,7 @@ const getRightMostAlien = () => {
   });
 };
 
+// CREATE A BULLET FUCNTION
 const createBullet = ({ x, y }) => {
   bullets.push(
     new Bullet({
@@ -57,6 +59,7 @@ const createBullet = ({ x, y }) => {
 
 // UPDATE FUNCTION
 const update = () => {
+  // move ship controls
   if (keys.a && ship.x > 0) {
     ship.moveLeft();
   }
@@ -69,6 +72,7 @@ const update = () => {
     });
   }
 
+  // update bullets, remove if out of bounds.
   bullets.forEach((bullet) => {
     bullet.update();
 
@@ -76,23 +80,22 @@ const update = () => {
       bullet.remove();
       bullets.splice(bullets.indexOf(bullet), 1);
     }
-    // console.log(bullets);
   });
 
+  // update aliens
   aliens.forEach((alien) => {
     alien.update();
   });
-
+  // aliens move down and change direction
   if (getLeftMostAlien().x < 100) {
     aliens.forEach((alien) => {
-      alien.moveDown();
       alien.setDirectionRight();
+      alien.moveDown();
     });
   }
   if (getRightMostAlien().x > window.innerWidth - 100) {
     aliens.forEach((alien) => {
       alien.moveDown();
-
       alien.setDirectionLeft();
     });
   }

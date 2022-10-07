@@ -7,7 +7,6 @@ export default class Bullet extends Entity {
     this.setX(x + 23);
     this.setY(y - 5);
   }
-
   update() {
     this.setY(this.y - this.SPEED);
   }

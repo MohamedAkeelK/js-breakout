@@ -1,3 +1,11 @@
+body {
+  background: rgb(20, 20, 20);
+  background: url("https://raw.githubusercontent.com/codewmax/space-invaders/master/img/background-blue.png");
+  animation: scroll-background 5s linear infinite;
+  position: relative;
+  z-index: -2;
+}
+
 .ship {
   width: 50px;
   height: 50px;
@@ -13,4 +21,19 @@
   width: 4px;
   height: 4px;
   position: fixed;
+}
+
+.alien {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+}
+
+@keyframes scroll-background {
+  from {
+    background-position-y: 0px;
+  } to {
+    background-position-y: 256px;
+
+  }
 }

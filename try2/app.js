@@ -1,5 +1,6 @@
 import Ship from "./Ship.js";
 import Bullet from "./Bullet.js";
+import Alien from "./Alien.js";
 
 // CONTROLS
 const keys = {
@@ -20,6 +21,17 @@ document.addEventListener("keyup", (e) => {
 // NEW SHIP INSTANCE
 const ship = new Ship();
 const bullets = [];
+
+const aliens = [];
+
+for (let row = 0; row < 2; row++) {
+  for (let col = 0; col < 10; col++) {
+    let alien = new Alien({
+      x: col * 100 + 200,
+      y: row * 100 + 40,
+    });
+  }
+}
 
 const createBullet = ({ x, y }) => {
   bullets.push(

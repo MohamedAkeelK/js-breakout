@@ -1,4 +1,4 @@
-// entity creates an element and 
+// entity creates an element and
 
 export default class Entity {
   constructor({ tag = "div", className = "" } = {}) {
@@ -13,5 +13,9 @@ export default class Entity {
   setY(y) {
     this.y = y;
     this.el.style.top = `${this.y}px`;
+  }
+  remove() {
+    this.el.remove();
+    this.el = null;
   }
 }

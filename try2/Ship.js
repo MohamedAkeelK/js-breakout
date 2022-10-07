@@ -7,7 +7,7 @@ export default class Ship extends Entity {
     this.el.src = SHIP_IMAGE;
     document.body.append(this.el);
 
-    this.SPEED = 4;
+    this.SPEED = 8;
     this.SHIP_IMAGE_WIDTH = 50;
     this.canFire = true;
 

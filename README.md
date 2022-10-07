@@ -13,3 +13,4 @@ https://www.youtube.com/watch?v=ov00c8Fzik8&t=2892s
 - using export and import.
 - extending classes, classes that extend another class have access to that objects properties and/or methods.
 - object destructuring.
+- create a visual representation when stuck.

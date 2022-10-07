@@ -44,7 +44,15 @@ const update = () => {
     });
   }
 
-  bullets.forEach((bullet) => bullet.update());
+  bullets.forEach((bullet) => {
+    bullet.update();
+
+    if (bullet.y < 0) {
+      bullet.remove();
+      bullets.splice(bullets.indexOf(bullet), 1);
+    }
+    console.log(bullets);
+  });
 };
 
 // UPDATES EVERY 20 MILISECONDS

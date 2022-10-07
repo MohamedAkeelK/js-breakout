@@ -4,6 +4,7 @@ body {
   animation: scroll-background 5s linear infinite;
   position: relative;
   z-index: -2;
+  color: white;
 }
 
 .ship {
@@ -30,6 +31,15 @@ body {
   position: fixed;
   width: 70px;
   height: 70px;
+  max-width: 100%;
+  height: auto;
+}
+
+.score {
+ position: fixed; 
+ font-size: 1.5rem;
+ left: 50%;
+ color: red;
 }
 
 @keyframes scroll-background {

@@ -5,6 +5,11 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+let score = 0;
+let scoreEl = document.querySelector(".score");
+scoreEl.innerText = `SCORE: ${score}`;
+let winner = false;
+
 // CLASSES
 import Ship from "./Ship.js";
 import Bullet from "./Bullet.js";
@@ -53,6 +58,8 @@ const bullets = [];
 const removeAlien = (alien) => {
   aliens.splice(aliens.indexOf(alien), 1);
   alien.remove();
+  score += 10;
+  scoreEl.innerText = `SCORE: ${score}`;
 };
 
 const removeBullet = (bullet) => {

@@ -8,6 +8,7 @@ export default class Alien extends Entity {
   constructor({ x, y, getOverlappingBullet, removeBullet, removeAlien }) {
     super({ tag: "img", className: "alien" });
     this.el.src = AlIEN_IMAGE;
+    // this.el.style.width = "70px";
     this.direction = LEFT;
     this.SPEED = 2;
     this.DOWN_DISTANCE = 40;

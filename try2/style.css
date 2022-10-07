@@ -17,10 +17,13 @@ body {
 }
 
 .bullet {
-  background-color: red;
-  width: 4px;
-  height: 4px;
+  background-color: rgb(228, 214, 55);
+  width: 6px;
+  height: 10px;
   position: fixed;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+
 }
 
 .alien {

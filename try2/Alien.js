@@ -11,7 +11,7 @@ export default class Alien extends Entity {
     // this.el.style.width = "70px";
     this.direction = LEFT;
     this.SPEED = 2;
-    this.DOWN_DISTANCE = 40;
+    this.DOWN_DISTANCE = 20;
     this.getOverlappingBullet = getOverlappingBullet;
     this.removeAlien = removeAlien;
     this.removeBullet = removeBullet;

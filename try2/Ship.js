@@ -1,6 +1,7 @@
 const SHIP_IMAGE = "./imgs/spaceship.png";
 import Entity from "./Entity.js";
 
+
 export default class Ship extends Entity {
   constructor() {
     super({ tag: "img", className: "ship" }); // calls parent Entity constructor with arguments.

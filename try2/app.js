@@ -1,14 +1,16 @@
+let points = 0;
+
+let pointsEl = document.createElement("div");
+pointsEl.className = "points";
+pointsEl.innerText = `POINTS: ${points}`;
+document.body.append(pointsEl);
+
 // prevent scrolling when pressing spacebar
 window.addEventListener("keydown", (e) => {
   if (e.key === " " && e.target === document.body) {
     e.preventDefault();
   }
 });
-
-let score = 0;
-let scoreEl = document.querySelector(".score");
-scoreEl.innerText = `SCORE: ${score}`;
-let winner = false;
 
 // CLASSES
 import Ship from "./Ship.js";
@@ -58,8 +60,7 @@ const bullets = [];
 const removeAlien = (alien) => {
   aliens.splice(aliens.indexOf(alien), 1);
   alien.remove();
-  score += 10;
-  scoreEl.innerText = `SCORE: ${score}`;
+  pointsEl.innerText = `POINTS: ${(points += 20)}`;
 };
 
 const removeBullet = (bullet) => {
@@ -84,15 +85,19 @@ for (let row = 0; row < 2; row++) {
 
 // DETERMINE RIGHT AND LEFT MOST ALIENS
 const getLeftMostAlien = () => {
-  return aliens.reduce((minimumAlien, currentAlien) => {
-    return currentAlien.x < minimumAlien.x ? currentAlien : minimumAlien;
-  });
+  if (aliens.length > 0) {
+    return aliens.reduce((minimumAlien, currentAlien) => {
+      return currentAlien.x < minimumAlien.x ? currentAlien : minimumAlien;
+    });
+  }
 };
 
 const getRightMostAlien = () => {
-  return aliens.reduce((maximumAlien, currentAlien) => {
-    return currentAlien.x > maximumAlien.x ? currentAlien : maximumAlien;
-  });
+  if (aliens.length > 0) {
+    return aliens.reduce((maximumAlien, currentAlien) => {
+      return currentAlien.x > maximumAlien.x ? currentAlien : maximumAlien;
+    });
+  }
 };
 
 // CREATE A BULLET FUCNTION
@@ -107,6 +112,11 @@ const createBullet = ({ x, y }) => {
 
 // UPDATE FUNCTION
 const update = () => {
+  // DETERMINES WINNER
+  if (points >= 400) {
+    pointsEl.innerText = "YOU WIN";
+    return;
+  }
   // move ship controls
   if (keys.a && ship.x > 0) {
     ship.moveLeft();
@@ -134,18 +144,20 @@ const update = () => {
   aliens.forEach((alien) => {
     alien.update();
   });
-  // aliens move down and change direction
-  if (getLeftMostAlien().x < 100) {
-    aliens.forEach((alien) => {
-      alien.setDirectionRight();
-      alien.moveDown();
-    });
-  }
-  if (getRightMostAlien().x > window.innerWidth - 100) {
-    aliens.forEach((alien) => {
-      alien.moveDown();
-      alien.setDirectionLeft();
-    });
+  if (aliens.length > 0) {
+    // aliens move down and change direction
+    if (getLeftMostAlien().x < 100) {
+      aliens.forEach((alien) => {
+        alien.setDirectionRight();
+        alien.moveDown();
+      });
+    }
+    if (getRightMostAlien().x > window.innerWidth - 100) {
+      aliens.forEach((alien) => {
+        alien.moveDown();
+        alien.setDirectionLeft();
+      });
+    }
   }
 };
 

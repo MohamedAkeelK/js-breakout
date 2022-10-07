@@ -1,3 +1,10 @@
+// prevent scrolling when pressing spacebar
+window.addEventListener("keydown", (e) => {
+  if (e.key === " " && e.target === document.body) {
+    e.preventDefault();
+  }
+});
+
 // CLASSES
 import Ship from "./Ship.js";
 import Bullet from "./Bullet.js";

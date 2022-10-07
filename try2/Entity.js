@@ -18,7 +18,10 @@ export default class Entity {
     this.el.style.top = `${this.y}px`;
   }
   remove() {
+    // if (this.el) {
+    //   this.el.remove();
+    //   this.el = null;
+    // }
     this.el.remove();
-    this.el = null;
   }
 }

@@ -10,7 +10,7 @@ export default class Alien extends Entity {
     this.el.src = AlIEN_IMAGE;
     this.direction = LEFT;
     this.SPEED = 2;
-    this.DISTANCE = 40;
+    this.DOWN_DISTANCE = 40;
     this.setX(x);
     this.setY(y);
   }
@@ -21,7 +21,7 @@ export default class Alien extends Entity {
     this.direction = RIGHT;
   }
   moveDown() {
-    this.setY(this.y + this.DISTANCE);
+    this.setY(this.y + this.DOWN_DISTANCE);
   }
   update() {
     if (this.direction === LEFT) {

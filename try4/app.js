@@ -1,5 +1,6 @@
 import { Player } from "./Player.js";
 import { Ball } from "./Ball.js";
+import { Block } from "./Block.js";
 
 // CONTROLS
 const keys = {
@@ -36,8 +37,19 @@ const getOverlappingPlayer = (entity) => {
 };
 
 // CREATE ASSETS
-let ball = new Ball({ getOverlappingPlayer });
+const blocks = [];
+const ball = new Ball({ getOverlappingPlayer });
 const player = new Player();
+
+for (let row = 0; row < 2; row++) {
+  for (let col = 0; col < 10; col++) {
+    let block = new Block({
+      x: col * 130 + 90,
+      y: row * 100 + 100,
+    });
+    blocks.push(block);
+  }
+}
 
 // MAIN GAME UPDATES
 const update = () => {

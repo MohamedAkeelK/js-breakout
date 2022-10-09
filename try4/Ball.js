@@ -47,7 +47,6 @@ export class Ball extends Entity {
   }
 
   // MOVE BALL
-  // TODO : create diagnal movement
   moveUp() {
     this.setY(this.y - this.SPEED);
   }
@@ -110,13 +109,13 @@ export class Ball extends Entity {
 
     const player = this.getOverlappingPlayer(this);
     if (player) {
-      // TODO : configure ball hitting player
-
-      if (!(this.x + 30 > player.x + 30) && !(this.x + 30 < player.x)) {
+      if (!(this.x >= player.x + 33) && !(this.x + 30 < player.x)) {
         this.setDirectionUpLeft();
-      } else if (!(this.x < player.x + 30) && !(this.x + 30 > player.x + 70)) {
+      }
+      if (!(this.x < player.x + 34) && !(this.x > player.x + 66)) {
         this.setDirectionUp();
-      } else {
+      }
+      if (!(this.x < player.x + 66) && !(this.x > player.x + 100)) {
         this.setDirectionUpRight();
       }
     }

@@ -39,11 +39,6 @@ const getOverlappingPlayer = (entity) => {
 let ball = new Ball({ getOverlappingPlayer });
 const player = new Player();
 
-// TODO : keep track of wether ball is moving down or up , left or right 
-// TODO : if ball hits left side feild and ball is moving up, then set direction to up-right
-// TODO : if ball hits right side feild and ball is moving up and then set direction  to up-left
-// TODO : if ball is moving up and hits left side feild, then set direction to up-right
-
 // MAIN GAME UPDATES
 const update = () => {
   if (keys.a && player.x > 0) {
@@ -53,16 +48,9 @@ const update = () => {
     player.moveRight();
   }
   ball.update();
-  if (ball.y < 0) {
-    ball.setDirectionDown();
-  }
-  if (ball.x < 0) {
-    ball.setDirectionRight();
-  }
-  if (ball.x > window.innerWidth - 30) {
-    ball.setDirectionLeft();
-  }
 };
 
 // UPDATES EVERY 20 MILISECONDS
 setInterval(update, 20);
+
+console.log(ball);

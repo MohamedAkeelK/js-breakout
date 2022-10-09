@@ -56,6 +56,8 @@ const getOverlappingBullet = (entity) => {
 // GAME STUFF ...
 const ship = new Ship();
 const bullets = [];
+const aliens = [];
+// const aliensGrid = []
 
 const removeAlien = (alien) => {
   aliens.splice(aliens.indexOf(alien), 1);
@@ -67,8 +69,6 @@ const removeBullet = (bullet) => {
   bullets.splice(bullets.indexOf(bullet), 1);
   bullet.remove();
 };
-
-const aliens = [];
 
 for (let row = 0; row < 2; row++) {
   for (let col = 0; col < 10; col++) {

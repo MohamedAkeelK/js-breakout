@@ -13,11 +13,17 @@ document.addEventListener("keyup", (e) => {
   keys[e.key] = false;
 });
 
+let ballEl = document.querySelector(".ball");
+let playerEl = document.querySelector(".player");
+
 class Entity {
   constructor({ tag = "div", className = "" } = {}) {
     this.el = document.createElement(tag);
     document.body.append(this.el);
     this.el.className = className;
+    this.el.style.position = "fixed";
+    this.x;
+    this.y;
   }
   setX(x) {
     this.x = x;
@@ -52,27 +58,88 @@ class Player extends Entity {
   }
 }
 
+const LEFT = "left";
+const RIGHT = "right";
+const UP = "up";
+const DOWN = "down";
+
 class Ball extends Entity {
-  constructor({ x, y }) {
+  constructor() {
     super({ className: "ball" });
     this.SPEED = 4;
-    this.setX(x + 23);
-    this.setY(y - 5);
+    this.setX(window.innerWidth / 2 - 50);
+    this.setY(window.innerHeight - 500);
+    this.hitTop = false;
+    this.hitBot = false;
+    this.hitRight = false;
+    this.hitLeft = false;
+    this.setDirectionLeft();
   }
+  setDirectionLeft() {
+    this.direction = LEFT;
+  }
+  setDirectionRight() {
+    this.direction = RIGHT;
+  }
+  setDirectionDown() {
+    this.direction = DOWN;
+  }
+  setDirectionUp() {
+    this.direction = UP;
+  }
+  moveDown() {
+    this.setY(this.y + this.SPEED);
+  }
+  moveUp() {
+    this.setY(this.y + this.SPEED);
+  }
+  moveRight() {
+    this.setX(this.x + this.SPEED);
+  }
+  moveLeft() {
+    this.setX(this.x - this.SPEED);
+  }
+
   update() {
-    this.setY(this.y - this.SPEED);
+    if (this.direction === UP) {
+      this.setY(this.y - this.SPEED);
+      this.moveUp();
+    }
+    if (this.direction === DOWN) {
+      this.setY(this.y + this.SPEED);
+      this.moveDown();
+    }
+    if (this.direction === RIGHT) {
+      this.setX(this.x + this.SPEED);
+      this.moveRight();
+    }
+    if (this.direction === LEFT) {
+      this.setX(this.x - this.SPEED);
+      this.moveLeft();
+    }
   }
 }
+
+let ball = new Ball();
 
 const player = new Player();
 
 const update = () => {
-  // move ship controls
   if (keys.a && player.x > 0) {
     player.moveLeft();
   }
   if (keys.d && player.x < window.innerWidth - player.PLAYER_IMAGE_WIDTH) {
     player.moveRight();
+  }
+  ball.update();
+  if (ball.y < 0) {
+    ball.setDirectionDown();
+  }
+  if (ball.x < 0) {
+    ball.setDirectionRight();
+  }
+  if (ball.x > window.innerWidth - 30) {
+    ball.setDirectionLeft();
   }
 };
 

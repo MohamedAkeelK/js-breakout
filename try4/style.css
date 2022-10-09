@@ -12,6 +12,14 @@ body {
 .player {
   width: 100px;
   height: 20px;
-  position: absolute;
+  /* position: absolute; */
   background-color: red;
+}
+
+.ball {
+  width: 30px;
+  height: 30px;
+  /* position: fixed; */
+  background-color: red;
+  border-radius: 50%;
 }

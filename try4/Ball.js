@@ -1,5 +1,6 @@
 import { Entity } from "./Entity.js";
 // import { Player } from "./Player.js";
+
 const LEFT = "left";
 const RIGHT = "right";
 const UP = "up";
@@ -11,10 +12,6 @@ export class Ball extends Entity {
     this.SPEED = 4;
     this.setX(window.innerWidth / 2 - 50);
     this.setY(window.innerHeight - 500);
-    this.hitTop = false;
-    this.hitBot = false;
-    this.hitRight = false;
-    this.hitLeft = false;
     this.setDirectionUp();
     this.getOverlappingPlayer = getOverlappingPlayer;
   }
@@ -65,8 +62,10 @@ export class Ball extends Entity {
       this.moveLeft();
     }
 
-    const ball = this.getOverlappingPlayer(this);
-    if (ball) {
+    const player = this.getOverlappingPlayer(this);
+    if (player) {
+      // TODO : configure ball hitting player
+      // console.log(player, this);
       this.setDirectionUp();
       this.moveUp();
     }

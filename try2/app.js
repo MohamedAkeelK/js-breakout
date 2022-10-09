@@ -36,6 +36,7 @@ document.addEventListener("keyup", (e) => {
 const isOverlapping = (entity1, entity2) => {
   const rect1 = entity1.el.getBoundingClientRect();
   const rect2 = entity2.el.getBoundingClientRect();
+  console.log(rect1, rect2);
   return !(
     rect1.right < rect2.left ||
     rect1.left > rect2.right ||

@@ -13,8 +13,27 @@ document.addEventListener("keyup", (e) => {
   keys[e.key] = false;
 });
 
-let ballEl = document.querySelector(".ball");
-let playerEl = document.querySelector(".player");
+// let ballEl = document.querySelector(".ball");
+// let playerEl = document.querySelector(".player");
+
+const isOverlapping = (entity1, entity2) => {
+  const rect1 = entity1.el.getBoundingClientRect();
+  const rect2 = entity2.el.getBoundingClientRect();
+  // console.log(rect1, rect2);
+  return !(
+    rect1.right < rect2.left ||
+    rect1.left > rect2.right ||
+    rect1.bottom < rect2.top ||
+    rect1.top > rect2.bottom
+  );
+};
+
+const getOverlappingPlayer = (entity) => {
+  if (isOverlapping(entity, player)) {
+    return player;
+  }
+  return null;
+};
 
 class Entity {
   constructor({ tag = "div", className = "" } = {}) {
@@ -64,7 +83,7 @@ const UP = "up";
 const DOWN = "down";
 
 class Ball extends Entity {
-  constructor() {
+  constructor({ getOverlappingPlayer }) {
     super({ className: "ball" });
     this.SPEED = 4;
     this.setX(window.innerWidth / 2 - 50);
@@ -73,7 +92,8 @@ class Ball extends Entity {
     this.hitBot = false;
     this.hitRight = false;
     this.hitLeft = false;
-    this.setDirectionLeft();
+    this.setDirectionUp();
+    this.getOverlappingPlayer = getOverlappingPlayer;
   }
   setDirectionLeft() {
     this.direction = LEFT;
@@ -89,15 +109,19 @@ class Ball extends Entity {
   }
   moveDown() {
     this.setY(this.y + this.SPEED);
+    this.setX(this.x + 1);
   }
   moveUp() {
-    this.setY(this.y + this.SPEED);
+    this.setY(this.y - this.SPEED);
+    this.setX(this.x + 1);
   }
   moveRight() {
     this.setX(this.x + this.SPEED);
+    this.setY(this.y - 1);
   }
   moveLeft() {
     this.setX(this.x - this.SPEED);
+    this.setY(this.y - 1);
   }
 
   update() {
@@ -117,10 +141,16 @@ class Ball extends Entity {
       this.setX(this.x - this.SPEED);
       this.moveLeft();
     }
+
+    const ball = this.getOverlappingPlayer(this);
+    if (ball) {
+      this.setDirectionUp();
+      this.moveUp();
+    }
   }
 }
 
-let ball = new Ball();
+let ball = new Ball({ getOverlappingPlayer });
 
 const player = new Player();
 

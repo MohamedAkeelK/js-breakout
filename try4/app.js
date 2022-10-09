@@ -1,4 +1,3 @@
-// import { Entity } from "./Entity.js";
 import { Player } from "./Player.js";
 import { Ball } from "./Ball.js";
 
@@ -17,6 +16,7 @@ document.addEventListener("keyup", (e) => {
   keys[e.key] = false;
 });
 
+// COLLISION DETECTION
 const isOverlapping = (entity1, entity2) => {
   const rect1 = entity1.el.getBoundingClientRect();
   const rect2 = entity2.el.getBoundingClientRect();
@@ -35,125 +35,11 @@ const getOverlappingPlayer = (entity) => {
   return null;
 };
 
-// class Entity {
-//   constructor({ tag = "div", className = "" } = {}) {
-//     this.el = document.createElement(tag);
-//     document.body.append(this.el);
-//     this.el.className = className;
-//     this.el.style.position = "fixed";
-//     this.x;
-//     this.y;
-//   }
-//   setX(x) {
-//     this.x = x;
-//     this.el.style.left = `${this.x}px`;
-//   }
-//   setY(y) {
-//     this.y = y;
-//     this.el.style.top = `${this.y}px`;
-//   }
-// }
-
-// class Player extends Entity {
-//   constructor() {
-//     super({ tag: "div", className: "player" });
-//     this.setX(window.innerWidth / 2 - 50);
-//     this.setY(window.innerHeight - 80);
-//     document.body.append(this.el);
-//     this.SPEED = 8;
-//     this.PLAYER_IMAGE_WIDTH = 100;
-//   }
-//   moveRight() {
-//     this.setX(this.x + this.SPEED);
-//   }
-//   moveLeft() {
-//     this.setX(this.x - this.SPEED);
-//   }
-//   moveUp() {
-//     this.setY(this.y - this.SPEED);
-//   }
-//   moveDown() {
-//     this.setY(this.y + this.SPEED);
-//   }
-// }
-
-// const LEFT = "left";
-// const RIGHT = "right";
-// const UP = "up";
-// const DOWN = "down";
-
-// class Ball extends Entity {
-//   constructor({ getOverlappingPlayer }) {
-//     super({ className: "ball" });
-//     this.SPEED = 4;
-//     this.setX(window.innerWidth / 2 - 50);
-//     this.setY(window.innerHeight - 500);
-//     this.hitTop = false;
-//     this.hitBot = false;
-//     this.hitRight = false;
-//     this.hitLeft = false;
-//     this.setDirectionUp();
-//     this.getOverlappingPlayer = getOverlappingPlayer;
-//   }
-//   setDirectionLeft() {
-//     this.direction = LEFT;
-//   }
-//   setDirectionRight() {
-//     this.direction = RIGHT;
-//   }
-//   setDirectionDown() {
-//     this.direction = DOWN;
-//   }
-//   setDirectionUp() {
-//     this.direction = UP;
-//   }
-//   moveDown() {
-//     this.setY(this.y + this.SPEED);
-//     this.setX(this.x + 1);
-//   }
-//   moveUp() {
-//     this.setY(this.y - this.SPEED);
-//     this.setX(this.x + 1);
-//   }
-//   moveRight() {
-//     this.setX(this.x + this.SPEED);
-//     this.setY(this.y - 1);
-//   }
-//   moveLeft() {
-//     this.setX(this.x - this.SPEED);
-//     this.setY(this.y - 1);
-//   }
-
-//   update() {
-//     if (this.direction === UP) {
-//       this.setY(this.y - this.SPEED);
-//       this.moveUp();
-//     }
-//     if (this.direction === DOWN) {
-//       this.setY(this.y + this.SPEED);
-//       this.moveDown();
-//     }
-//     if (this.direction === RIGHT) {
-//       this.setX(this.x + this.SPEED);
-//       this.moveRight();
-//     }
-//     if (this.direction === LEFT) {
-//       this.setX(this.x - this.SPEED);
-//       this.moveLeft();
-//     }
-
-//     const ball = this.getOverlappingPlayer(this);
-//     if (ball) {
-//       this.setDirectionUp();
-//       this.moveUp();
-//     }
-//   }
-// }
-
+// CREATE ASSETS
 let ball = new Ball({ getOverlappingPlayer });
-
 const player = new Player();
 
+// MAIN GAME UPDATES
 const update = () => {
   if (keys.a && player.x > 0) {
     player.moveLeft();

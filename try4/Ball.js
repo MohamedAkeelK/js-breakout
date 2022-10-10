@@ -16,7 +16,7 @@ export class Ball extends Entity {
     super({ className: "ball" });
     this.SPEED = 13;
     this.setX(window.innerWidth / 2 - 50);
-    this.setY(window.innerHeight - 480);
+    this.setY(window.innerHeight - 470);
     this.setDirectionDown();
     this.getOverlappingPlayer = getOverlappingPlayer;
   }
@@ -66,15 +66,15 @@ export class Ball extends Entity {
   }
   moveUpRight() {
     this.setY(this.y - this.SPEED);
-    this.setX(this.x + 4);
+    this.setX(this.x + 5);
   }
   moveDownLeft() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x - 4);
+    this.setX(this.x - 5);
   }
   moveDownRight() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x + 4);
+    this.setX(this.x + 5);
   }
 
   // MOVE IN DIRECTION,

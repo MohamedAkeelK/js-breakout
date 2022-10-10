@@ -70,7 +70,7 @@ let i = 0;
 for (let row = 0; row < 3; row++) {
   for (let col = 0; col < 7; col++) {
     let block = new Block({
-      x: col * 180 + 120,
+      x: col * 170 + 160,
       y: row * 100 + 100,
       blockThatGotHit,
       removeBlock,

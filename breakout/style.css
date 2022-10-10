@@ -8,10 +8,15 @@ body {
   margin: 0;
   padding: 0;
   /* background-color: rgba(0, 0, 0, 0.339); */
-  background: url("https://raw.githubusercontent.com/codewmax/space-invaders/master/img/background-blue.png");
-  animation: scroll-background 5s linear infinite;
+  /* background: url("https://raw.githubusercontent.com/codewmax/space-invaders/master/img/background-blue.png"); */
+  /* animation: scroll-background 5s linear infinite; */
   position: relative;
   z-index: -2;
+  background: linear-gradient(-45deg, #ee7752, #874bd0, #3b7d95, #3eb79b);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+
 }
 
 .player {
@@ -21,7 +26,6 @@ body {
   background-color: rgb(189, 78, 78);
   border-radius: 20px;
   border: 2px solid white;
-
 }
 
 .ball {
@@ -41,22 +45,21 @@ body {
   background-color: rgb(58, 58, 199);
   border: 2px solid white;
   border-radius: 20px;
-
 }
 
 .points {
   position: fixed; 
   font-size: 1.5rem;
-  left: 46%;
-  color: red;
+  left: 44%;
+  color: rgb(240, 240, 240);
   z-index: 3;
  }
 
  .loser{
   position: fixed; 
-  font-size: 5rem;
-  left: 20%;
-  color: red;
+  font-size: 6rem;
+  left:12%;
+  color: rgb(229, 95, 95);
   z-index: 3;
   top: 300px;
  }
@@ -64,8 +67,8 @@ body {
  .winner {
   position: fixed; 
   font-size: 5rem;
-  left: 22%;
-  color: red;
+  left: 19%;
+  color: rgb(229, 95, 95);
   z-index: 3;
   top: 300px;
  }
@@ -75,5 +78,17 @@ body {
     background-position-y: 0px;
   } to {
     background-position-y: 256px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

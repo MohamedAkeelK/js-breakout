@@ -46,6 +46,25 @@ body {
   font-size: 1.5rem;
   left: 46%;
   color: red;
+  z-index: 3;
+ }
+
+ .loser{
+  position: fixed; 
+  font-size: 5rem;
+  left: 20%;
+  color: red;
+  z-index: 3;
+  top: 300px;
+ }
+
+ .winner {
+  position: fixed; 
+  font-size: 5rem;
+  left: 40%;
+  color: red;
+  z-index: 3;
+  top: 300px;
  }
  
  @keyframes scroll-background {

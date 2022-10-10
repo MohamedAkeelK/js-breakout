@@ -68,7 +68,7 @@ const player = new Player();
 // CREATES BLOCKS
 let i = 0;
 for (let row = 0; row < 3; row++) {
-  for (let col = 0; col < 10; col++) {
+  for (let col = 0; col < 7; col++) {
     let block = new Block({
       x: col * 200 + 70,
       y: row * 100 + 100,
@@ -83,6 +83,17 @@ for (let row = 0; row < 3; row++) {
 
 // MAIN GAME UPDATES
 const update = () => {
+  if (ball.y > window.innerHeight) {
+    pointsEl.innerText = `GAME OVER, YOU LOSE!`;
+    pointsEl.className = "loser";
+    return;
+  }
+  if (points === 420) {
+    pointsEl.innerText = `GAME OVER, YOU WIN!`;
+    pointsEl.className = "winner";
+    return;
+  }
+
   if (keys.a && player.x > 0) {
     player.moveLeft();
   }

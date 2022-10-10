@@ -11,7 +11,6 @@ const keys = {
 // EVENTS
 document.addEventListener("keydown", (e) => {
   keys[e.key] = true;
-  // console.log(e.key);
 });
 
 document.addEventListener("keyup", (e) => {
@@ -30,6 +29,7 @@ const isOverlapping = (entity1, entity2) => {
   );
 };
 
+// PLAYER COLLISION
 const getOverlappingPlayer = (entity) => {
   if (isOverlapping(entity, player)) {
     return player;
@@ -37,8 +37,8 @@ const getOverlappingPlayer = (entity) => {
   return null;
 };
 
+// BLOCK COLLISION
 const blockThatGotHit = () => {
-  // console.log("hey");
   for (let block of blocks)
     if (isOverlapping(block, ball)) {
       return block;
@@ -46,6 +46,7 @@ const blockThatGotHit = () => {
   return;
 };
 
+// REMOVE BLOCK
 const removeBlock = (block) => {
   blocks.splice(blocks.indexOf(block), 1);
   block.remove();
@@ -56,6 +57,7 @@ const blocks = [];
 const ball = new Ball({ getOverlappingPlayer });
 const player = new Player();
 
+// CREATES BLOCKS
 let i = 0;
 for (let row = 0; row < 2; row++) {
   for (let col = 0; col < 10; col++) {
@@ -86,5 +88,3 @@ const update = () => {
 
 // UPDATES EVERY 20 MILISECONDS
 setInterval(update, 20);
-
-console.log(ball);

@@ -9,6 +9,7 @@ export class Player extends Entity {
     this.SPEED = 8;
     this.PLAYER_IMAGE_WIDTH = 100;
   }
+  // PLAYER MOVEMENT
   moveRight() {
     this.setX(this.x + this.SPEED);
   }

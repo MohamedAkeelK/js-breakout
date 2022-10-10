@@ -11,15 +11,12 @@ export class Block extends Entity {
     this.removeBlock = removeBlock;
     this.blockId = blockId;
   }
+  // BLOCK UPDATES
   update() {
     const block = this.blockThatGotHit();
-    // console.log(block);
     if (block) {
       console.log("blockId: ", this.blockId);
       this.removeBlock(block);
-
-      // this.removeBall(ball);
     }
-    // this.removeBullet(this);
   }
 }

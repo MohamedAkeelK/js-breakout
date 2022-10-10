@@ -20,6 +20,5 @@ export class Entity {
       this.el.remove();
       this.el = null;
     }
-    // this.el.remove();
   }
 }

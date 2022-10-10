@@ -17,7 +17,7 @@ export class Ball extends Entity {
     this.SPEED = 6;
     this.setX(window.innerWidth / 2 - 50);
     this.setY(window.innerHeight - 500);
-    this.setDirectionUp();
+    this.setDirectionDown();
     this.getOverlappingPlayer = getOverlappingPlayer;
   }
   // SET DIRECTION STATES
@@ -109,7 +109,8 @@ export class Ball extends Entity {
       if (!(this.x >= player.x + 33) && !(this.x + 30 < player.x)) {
         this.setDirectionUpLeft();
         console.log(this.direction);
-      }``
+      }
+      ``;
       if (!(this.x < player.x + 34) && !(this.x > player.x + 66)) {
         this.setDirectionUp();
         console.log(this.direction);

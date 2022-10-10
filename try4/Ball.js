@@ -14,9 +14,9 @@ const DOWN_RIGHT = "down_right";
 export class Ball extends Entity {
   constructor({ getOverlappingPlayer }) {
     super({ className: "ball" });
-    this.SPEED = 6;
+    this.SPEED = 9;
     this.setX(window.innerWidth / 2 - 50);
-    this.setY(window.innerHeight - 500);
+    this.setY(window.innerHeight - 400);
     this.setDirectionDown();
     this.getOverlappingPlayer = getOverlappingPlayer;
   }
@@ -62,19 +62,19 @@ export class Ball extends Entity {
   }
   moveUpLeft() {
     this.setY(this.y - this.SPEED);
-    this.setX(this.x - 2);
+    this.setX(this.x - 4);
   }
   moveUpRight() {
     this.setY(this.y - this.SPEED);
-    this.setX(this.x + 2);
+    this.setX(this.x + 4);
   }
   moveDownLeft() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x - 2);
+    this.setX(this.x - 4);
   }
   moveDownRight() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x + 2);
+    this.setX(this.x + 4);
   }
 
   // MOVE IN DIRECTION,
@@ -108,15 +108,15 @@ export class Ball extends Entity {
     if (player) {
       if (!(this.x >= player.x + 33) && !(this.x + 30 < player.x)) {
         this.setDirectionUpLeft();
-        console.log(this.direction);
+        // console.log(this.direction);
       }
       if (!(this.x < player.x + 34) && !(this.x > player.x + 66)) {
         this.setDirectionUp();
-        console.log(this.direction);
+        // console.log(this.direction);
       }
       if (!(this.x < player.x + 66) && !(this.x > player.x + 100)) {
         this.setDirectionUpRight();
-        console.log(this.direction);
+        // console.log(this.direction);
       }
     }
     // WALL COLLISION

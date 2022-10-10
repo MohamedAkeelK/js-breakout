@@ -59,10 +59,10 @@ const player = new Player();
 
 // CREATES BLOCKS
 let i = 0;
-for (let row = 0; row < 2; row++) {
+for (let row = 0; row < 3; row++) {
   for (let col = 0; col < 10; col++) {
     let block = new Block({
-      x: col * 130 + 90,
+      x: col * 120 + 90,
       y: row * 100 + 100,
       blockThatGotHit,
       removeBlock,

@@ -14,7 +14,7 @@ const DOWN_RIGHT = "down_right";
 export class Ball extends Entity {
   constructor({ getOverlappingPlayer }) {
     super({ className: "ball" });
-    this.SPEED = 9;
+    this.SPEED = 7;
     this.setX(window.innerWidth / 2 - 50);
     this.setY(window.innerHeight - 400);
     this.setDirectionDown();

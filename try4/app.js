@@ -1,3 +1,10 @@
+let points = 0;
+
+let pointsEl = document.createElement("div");
+pointsEl.className = "points";
+pointsEl.innerText = `POINTS: ${points}`;
+document.body.append(pointsEl);
+
 import { Player } from "./Player.js";
 import { Ball } from "./Ball.js";
 import { Block } from "./Block.js";
@@ -50,6 +57,7 @@ const blockThatGotHit = () => {
 const removeBlock = (block) => {
   blocks.splice(blocks.indexOf(block), 1);
   block.remove();
+  pointsEl.innerText = `POINTS: ${(points += 20)}`;
 };
 
 // CREATE ASSETS
@@ -62,7 +70,7 @@ let i = 0;
 for (let row = 0; row < 3; row++) {
   for (let col = 0; col < 10; col++) {
     let block = new Block({
-      x: col * 120 + 90,
+      x: col * 200 + 70,
       y: row * 100 + 100,
       blockThatGotHit,
       removeBlock,

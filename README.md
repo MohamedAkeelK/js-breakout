@@ -1,6 +1,8 @@
 # Breakout JS
 
-The classic breakout game created with javascript.
+- The classic breakout game created with javascript.
+- break all blocks to win.
+- if ball misses player you lose.
 
 # references
 

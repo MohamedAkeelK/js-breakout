@@ -22,12 +22,11 @@ https://www.youtube.com/watch?v=ov00c8Fzik8&t=2892s
 - create a visual representation when stuck.
 - dont hardcode strings that you use in multiple parts, instead store that string in a variable so if changes are needed you only have to update the variable rather than updating every single string.
 
+# Next steps
+
 # TODO:
 
 - change hardcoded numbers to a variable.
-
-# Next steps
-
 - make game start on a key press and restrart when player loses.
 - fix double collision when ball hits more than one block.
 - add powers.

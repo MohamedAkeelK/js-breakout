@@ -6,7 +6,7 @@ export class Player extends Entity {
     this.setX(window.innerWidth / 2 - 50);
     this.setY(window.innerHeight - 80);
     document.body.append(this.el);
-    this.SPEED = 8;
+    this.SPEED = 10;
     this.PLAYER_IMAGE_WIDTH = 100;
   }
   // PLAYER MOVEMENT

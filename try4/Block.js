@@ -18,14 +18,14 @@ export class Block extends Entity {
   update() {
     const block = this.blockThatGotHit();
     if (block) {
-      console.log(this.ball.direction, "HERE");
+      // console.log(this.ball.direction, "HERE");
       // bottom of block
       if (
         this.ball.direction === "up" ||
         this.ball.direction === "up_left" ||
         this.ball.direction === "up_right"
       ) {
-        console.log("bottom of block");
+        // console.log("bottom of block");
         if (this.ball.y < block.y + 20 && this.ball.direction === "up_left") {
           // if (this.ball.x < block.x && this.ball.x > block.x + 100) {
           this.removeBlock(block);
@@ -50,7 +50,7 @@ export class Block extends Entity {
         this.ball.direction === "down_right"
       ) {
         // top of block
-        console.log("Top of block");
+        // console.log("Top of block");
         if (this.ball.y + 30 > block.y && this.ball.direction === "down_left") {
           this.removeBlock(block);
           this.ball.setDirectionUpLeft();

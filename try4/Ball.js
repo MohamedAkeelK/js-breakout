@@ -16,7 +16,7 @@ export class Ball extends Entity {
     super({ className: "ball" });
     this.SPEED = 13;
     this.setX(window.innerWidth / 2 - 50);
-    this.setY(window.innerHeight - 400);
+    this.setY(window.innerHeight - 480);
     this.setDirectionDown();
     this.getOverlappingPlayer = getOverlappingPlayer;
   }

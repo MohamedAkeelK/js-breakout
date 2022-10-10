@@ -21,22 +21,26 @@ body {
   /* position: absolute; */
   background-color: rgb(189, 78, 78);
   border-radius: 20px;
+  border: 2px solid white;
+
 }
 
 .ball {
   width: 30px;
   height: 30px;
   /* position: fixed; */
-  background-color: rgb(218, 212, 57);
+  background-color: rgb(93, 255, 122);
   border-radius: 50%;
   border-radius: 20px;
+  border: 2px solid white;
 
 }
 
 .block {
   width: 100px;
   height: 20px;
-  background-color: blue;
+  background-color: rgb(58, 58, 199);
+  border: 2px solid white;
   border-radius: 20px;
 
 }

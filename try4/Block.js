@@ -27,22 +27,22 @@ export class Block extends Entity {
       ) {
         console.log("bottom of block");
         if (this.ball.y < block.y + 20 && this.ball.direction === "up_left") {
-          if (!(this.ball.x + 30 < block.x && this.ball.x > block.x + 100)) {
-            this.removeBlock(block);
-            this.ball.setDirectionDownLeft();
-          }
+          // if (this.ball.x < block.x && this.ball.x > block.x + 100) {
+          this.removeBlock(block);
+          this.ball.setDirectionDownLeft();
+          // }
         }
         if (this.ball.y < block.y + 20 && this.ball.direction === "up_right") {
-          if (!(this.ball.x + 30 < block.x && this.ball.x > block.x + 100)) {
-            this.removeBlock(block);
-            this.ball.setDirectionDownRight();
-          }
+          // if (this.ball.x < block.x && this.ball.x > block.x + 100) {
+          this.removeBlock(block);
+          this.ball.setDirectionDownRight();
+          // }
         }
         if (this.ball.y < block.y + 20 && this.ball.direction === "up") {
-          if (!(this.ball.x + 30 < block.x && this.ball.x > block.x + 100)) {
-            this.removeBlock(block);
-            this.ball.setDirectionDown();
-          }
+          // if (this.ball.x < block.x && this.ball.x > block.x + 100) {
+          this.removeBlock(block);
+          this.ball.setDirectionDown();
+          // }
         }
       } else if (
         this.ball.direction === "down" ||

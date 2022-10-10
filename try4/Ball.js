@@ -110,7 +110,6 @@ export class Ball extends Entity {
         this.setDirectionUpLeft();
         console.log(this.direction);
       }
-      ``;
       if (!(this.x < player.x + 34) && !(this.x > player.x + 66)) {
         this.setDirectionUp();
         console.log(this.direction);

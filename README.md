@@ -30,3 +30,4 @@ https://www.youtube.com/watch?v=ov00c8Fzik8&t=2892s
 - make game start on a key press and restrart when player loses.
 - fix double collision when ball hits more than one block.
 - add powers.
+

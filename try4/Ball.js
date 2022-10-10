@@ -33,7 +33,7 @@ export class Ball extends Entity {
   setDirectionUp() {
     this.direction = UP;
   }
-  // 2d directions
+  // DIAGNAL DIRECTIONS
   setDirectionUpLeft() {
     this.direction = UP_LEFT;
   }

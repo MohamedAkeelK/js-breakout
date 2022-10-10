@@ -67,6 +67,7 @@ for (let row = 0; row < 2; row++) {
       blockThatGotHit,
       removeBlock,
       blockId: i + 1,
+      ball,
     });
     blocks.push(block);
   }

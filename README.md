@@ -1,8 +1,13 @@
 # Breakout JS
 
 - The classic breakout game created with javascript.
+- use "a" to move left, and "d" to move right.
 - break all blocks to win.
 - if ball misses player you lose.
+
+# view game
+
+https://mohamedakeelk.github.io/breakout/
 
 # references
 

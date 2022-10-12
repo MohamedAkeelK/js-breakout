@@ -16,7 +16,6 @@ body {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
-
 }
 
 .player {
@@ -36,7 +35,6 @@ body {
   border-radius: 50%;
   border-radius: 20px;
   border: 2px solid white;
-
 }
 
 .block {
@@ -48,35 +46,36 @@ body {
 }
 
 .points {
-  position: fixed; 
+  position: fixed;
   font-size: 1.5rem;
   left: 44%;
   color: rgb(240, 240, 240);
   z-index: 3;
- }
+}
 
- .loser{
-  position: fixed; 
+.loser {
+  position: fixed;
   font-size: 6rem;
-  left:12%;
+  left: 12%;
   color: rgb(229, 95, 95);
   z-index: 3;
   top: 300px;
- }
+}
 
- .winner {
-  position: fixed; 
+.winner {
+  position: fixed;
   font-size: 5rem;
   left: 19%;
   color: rgb(229, 95, 95);
   z-index: 3;
   top: 300px;
- }
- 
- @keyframes scroll-background {
+}
+
+@keyframes scroll-background {
   from {
     background-position-y: 0px;
-  } to {
+  }
+  to {
     background-position-y: 256px;
   }
 }

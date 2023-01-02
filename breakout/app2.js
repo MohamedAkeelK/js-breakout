@@ -41,6 +41,7 @@ const getOverlappingPlayer = (entity) => {
 const blockThatGotHit = () => {
   for (let block of blocks)
     if (isOverlapping(block, ball)) {
+      console.log("block hit");
       return block;
     }
   return;
@@ -53,7 +54,7 @@ const removeBlock = (block) => {
   pointsEl.innerText = `POINTS: ${(points += 20)}`;
 };
 
-// CREATE POINTS AND START BUTTON 
+// CREATE POINTS AND START BUTTON
 let points = 0;
 
 let pointsEl = document.createElement("div");
@@ -66,10 +67,15 @@ startBtn.innerText = "Start Game";
 startBtn.className = "startBtn";
 document.body.append(startBtn);
 
+let resetBtn = document.createElement("button");
+resetBtn.innerText = "reset Game";
+resetBtn.className = "resetBtn";
+document.body.append(resetBtn);
+
 // CREATE ASSETS
 const blocks = [];
-const ball = new Ball({ getOverlappingPlayer });
-const player = new Player();
+let ball = new Ball({ getOverlappingPlayer });
+let player = new Player();
 
 // CREATES BLOCKS
 let i = 0;
@@ -86,51 +92,59 @@ for (let row = 0; row < 3; row++) {
     blocks.push(block);
   }
 }
+// let ballElem = document.querySelectorAll(".ball");
 
 // run update function on on start
 startBtn.addEventListener("click", () => {
-  // startBtn.style.visibility = "hidden";
-  const myint = setInterval(update, 20);
+  // const myint = setInterval(update, 20);
 
   resetBtn.addEventListener("click", () => {
-    checkLoser(myint);
-    // clearInterval(myint);
+    // checkLoser(myint);
+    points = 0;
+    pointsEl.innerText = points;
+    console.log(points);
+    // ball.remove();
+    // ball = null;
+
+    // console.log(ballElem, "here");
+    document.querySelector(".ball").remove();
+
+    ball = new Ball({ getOverlappingPlayer });
+
+    // player.remove();
+    document.querySelector(".player").remove();
+    player = new Player();
   });
+  setInterval(update, 20);
 });
 
-let resetBtn = document.createElement("button");
-resetBtn.innerText = "reset Game";
-resetBtn.className = "resetBtn";
-document.body.append(resetBtn);
-// resetBtn.style.visibility = "hidden";
-
-// createResetBtn();
-
-let checkLoser = (inter) => {
+let checkLoser = () => {
   if (ball.y > window.innerHeight) {
-    pointsEl.innerText = `GAME OVER, YOU LOSE!`;
-    pointsEl.className = "loser";
-    console.log("checking loser");
-    console.log(inter);
-    clearInterval(inter);
-    // resetBtn.style.visibility = "visible";
-    return;
+    return true;
+  } else {
+    return false;
   }
 };
 
 let checkWinner = () => {
   if (points === 420) {
-    pointsEl.innerText = `GAME OVER, YOU WIN!`;
-    pointsEl.className = "winner";
-    // resetBtn.style.visibility = "visible";
-    return;
+    return true;
+  } else {
+    return false;
   }
 };
 
 // MAIN GAME UPDATES
 const update = () => {
-  checkLoser();
-  checkWinner();
+  console.log(points);
+  if (checkLoser()) {
+    pointsEl.innerText = `GAME OVER, YOU LOSE!`;
+    pointsEl.className = "loser";
+  }
+  if (checkWinner()) {
+    pointsEl.innerText = `GAME OVER, YOU WIN!`;
+    pointsEl.className = "winner";
+  }
 
   if (keys.a && player.x > 0) {
     player.moveLeft();
@@ -145,11 +159,6 @@ const update = () => {
   return;
 };
 
-// const myint = setInterval(update, 20);
-
 // function startGame() {
 //   return myint();
 // }
-
-// UPDATES EVERY 20 MILISECONDS
-// setInterval(update, 20);

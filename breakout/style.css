@@ -18,6 +18,26 @@ body {
   height: 100vh;
 }
 
+.startBtn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* margin-left: auto; */
+  padding: 20px;
+  z-index: 5;
+}
+
+.resetBtn {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* margin-left: auto; */
+  padding: 20px;
+  z-index: 5;  
+}
+
 .player {
   width: 100px;
   height: 20px;
@@ -48,7 +68,8 @@ body {
 .points {
   position: fixed;
   font-size: 1.5rem;
-  left: 44%;
+  left: 50%;
+  transform: translateX(-50%);
   color: rgb(240, 240, 240);
   z-index: 3;
 }

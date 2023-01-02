@@ -4,7 +4,7 @@ const keys = {
   d: false,
 };
 
-// EVENTS
+// KEY EVENTS
 document.addEventListener("keydown", (e) => {
   keys[e.key] = true;
 });
@@ -51,7 +51,7 @@ const blockThatGotHit = () => {
 const removeBlock = (block) => {
   blocks.splice(blocks.indexOf(block), 1);
   block.remove();
-  pointsEl.innerText = `POINTS: ${(points += 1)}`;
+  pointsEl.innerHTML = `<span id="blahh">POINTS:</span> ${(points += 1)}`;
   console.log("block removed");
 };
 
@@ -78,7 +78,7 @@ let points = 0;
 
 let pointsEl = document.createElement("div");
 pointsEl.className = "points";
-pointsEl.innerText = `POINTS: ${points}`;
+pointsEl.innerHTML = `<span id="blahh">POINTS:</span> ${points}`;
 document.body.append(pointsEl);
 
 let startBtn = document.createElement("button");
@@ -98,11 +98,14 @@ let player = new Player();
 
 let resetGame = () => {
   startBtn.style.visibility = "visible";
+  startBtn.innerText = "Play Again";
 
   clearInterval(myint);
   // reset points
   points = 0;
-  pointsEl.innerText = points;
+  pointsEl.className = "points";
+  // pointsEl.innerText = points;
+  pointsEl.innerHTML = `<span id="blahh">POINTS:</span> <span id="mypoints  ">${points}</span>`;
 
   // reset ball
   document.querySelectorAll(".ball").forEach((e) => e.remove());
@@ -131,10 +134,22 @@ startBtn.addEventListener("click", () => {
   resetGame();
   myint = setInterval(update, 20);
   startBtn.style.visibility = "hidden";
+  let loser = document.querySelector(".loser");
+
+  if (loser) {
+    // console.log(loser);
+    loser.style.backgroundColor = "transparent";
+  }
 });
 
 let checkLoser = () => {
   if (ball.y > window.innerHeight) {
+    let loser = document.querySelector(".loser");
+
+    if (loser) {
+      // console.log(loser);
+      loser.style.backgroundColor = "rgba(0, 0, 0, 0.697)";
+    }
     resetGame();
     return true;
   } else {

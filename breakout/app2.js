@@ -86,43 +86,20 @@ startBtn.innerText = "Start Game";
 startBtn.className = "startBtn";
 document.body.append(startBtn);
 
-let resetBtn = document.createElement("button");
-resetBtn.innerText = "reset Game";
-resetBtn.className = "resetBtn";
-document.body.append(resetBtn);
+// let resetBtn = document.createElement("button");
+// resetBtn.innerText = "reset Game";
+// resetBtn.className = "resetBtn";
+// document.body.append(resetBtn);
 
 // CREATE ASSETS
 let blocks = [];
 let ball = new Ball({ getOverlappingPlayer });
 let player = new Player();
 
-var interval = {
-  // to keep a reference to all the intervals
-  intervals: new Set(),
-
-  // create another interval
-  make(...args) {
-    var newInterval = setInterval(...args);
-    this.intervals.add(newInterval);
-    return newInterval;
-  },
-
-  // clear a single interval
-  clear(id) {
-    this.intervals.delete(id);
-    return clearInterval(id);
-  },
-
-  // clear all intervals
-  clearAll() {
-    this.intervals.clear();
-  },
-};
-
 let resetGame = () => {
-  //clear interval
+  startBtn.style.visibility = "visible";
+
   clearInterval(myint);
-  // interval.clearAll();
   // reset points
   points = 0;
   pointsEl.innerText = points;
@@ -140,28 +117,20 @@ let resetGame = () => {
     e.remove();
   });
   blocks.forEach((block) => block.remove());
-
   blocks = [];
-
   createBlocks();
 };
 
+// creates blocks on first page load
 createBlocks();
 let myint;
+
 // ON START
 startBtn.addEventListener("click", () => {
   clearInterval(myint);
   resetGame();
   myint = setInterval(update, 20);
-
-  // interval.clearAll();
-
-  // resetBtn.addEventListener("click", () => {
-  //   clearInterval(myint);
-  //   resetGame();
-  // });
-  // run update function
-  // createBlocks();
+  startBtn.style.visibility = "hidden";
 });
 
 let checkLoser = () => {
@@ -184,7 +153,6 @@ let checkWinner = () => {
 
 // MAIN GAME UPDATES
 const update = () => {
-  // console.log(blocks);
   if (checkLoser()) {
     pointsEl.innerText = `GAME OVER, YOU LOSE!`;
     pointsEl.className = "loser";
@@ -206,7 +174,3 @@ const update = () => {
   });
   return;
 };
-
-// function startGame() {
-//   return myint();
-// }

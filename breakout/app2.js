@@ -146,7 +146,7 @@ let resetGame = () => {
   createBlocks();
 };
 
-// createBlocks();
+createBlocks();
 let myint;
 // ON START
 startBtn.addEventListener("click", () => {
@@ -174,7 +174,8 @@ let checkLoser = () => {
 };
 
 let checkWinner = () => {
-  if (points === 420) {
+  if (points === 10) {
+    resetGame();
     return true;
   } else {
     return false;

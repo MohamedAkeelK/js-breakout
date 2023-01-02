@@ -93,6 +93,16 @@ body {
   font-weight: 900;
 }
 
+.controls {
+  font-size: 2rem;
+  font-weight: 900;
+  color: whitesmoke;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80%;
+}
+
 .loser {
   position: fixed;
   font-size: 6rem;

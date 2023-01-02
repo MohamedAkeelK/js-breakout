@@ -4,6 +4,11 @@ const keys = {
   d: false,
 };
 
+let blockRows = 7;
+let blockCols = 3;
+
+let winningPoint = blockRows * blockCols * 10;
+
 // KEY EVENTS
 document.addEventListener("keydown", (e) => {
   keys[e.key] = true;
@@ -51,15 +56,15 @@ const blockThatGotHit = () => {
 const removeBlock = (block) => {
   blocks.splice(blocks.indexOf(block), 1);
   block.remove();
-  pointsEl.innerHTML = `<span id="blahh">POINTS:</span> ${(points += 1)}`;
+  pointsEl.innerHTML = `<span id="blahh">POINTS:</span> ${(points += 10)}`;
   console.log("block removed");
 };
 
 // CREATES BLOCKS
 let createBlocks = () => {
   let i = 0;
-  for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 7; col++) {
+  for (let row = 0; row < blockCols; row++) {
+    for (let col = 0; col < blockRows; col++) {
       let block = new Block({
         x: col * 170 + 160,
         y: row * 100 + 100,
@@ -86,6 +91,11 @@ startBtn.innerText = "Start Game";
 startBtn.className = "startBtn";
 document.body.append(startBtn);
 
+let controlsEl = document.createElement("p");
+controlsEl.className = "controls";
+controlsEl.innerText = `use "a" and "d" to move player!`;
+document.body.append(controlsEl);
+
 // let resetBtn = document.createElement("button");
 // resetBtn.innerText = "reset Game";
 // resetBtn.className = "resetBtn";
@@ -98,6 +108,7 @@ let player = new Player();
 
 let resetGame = () => {
   startBtn.style.visibility = "visible";
+  controlsEl.style.visibility = "visible";
   startBtn.innerText = "Play Again";
 
   clearInterval(myint);
@@ -134,6 +145,8 @@ startBtn.addEventListener("click", () => {
   resetGame();
   myint = setInterval(update, 20);
   startBtn.style.visibility = "hidden";
+  controlsEl.style.visibility = "hidden";
+
   let loser = document.querySelector(".loser");
 
   if (loser) {
@@ -158,7 +171,7 @@ let checkLoser = () => {
 };
 
 let checkWinner = () => {
-  if (points === 10) {
+  if (points === winningPoint) {
     resetGame();
     return true;
   } else {

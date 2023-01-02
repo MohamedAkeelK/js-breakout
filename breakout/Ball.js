@@ -62,19 +62,19 @@ export class Ball extends Entity {
   }
   moveUpLeft() {
     this.setY(this.y - this.SPEED);
-    this.setX(this.x - 5);
+    this.setX(this.x - 3);
   }
   moveUpRight() {
     this.setY(this.y - this.SPEED);
-    this.setX(this.x + 5);
+    this.setX(this.x + 3);
   }
   moveDownLeft() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x - 5);
+    this.setX(this.x - 3);
   }
   moveDownRight() {
     this.setY(this.y + this.SPEED);
-    this.setX(this.x + 5);
+    this.setX(this.x + 3);
   }
 
   // MOVE IN DIRECTION,

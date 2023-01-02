@@ -51,7 +51,26 @@ const blockThatGotHit = () => {
 const removeBlock = (block) => {
   blocks.splice(blocks.indexOf(block), 1);
   block.remove();
-  pointsEl.innerText = `POINTS: ${(points += 20)}`;
+  pointsEl.innerText = `POINTS: ${(points += 1)}`;
+  console.log("block removed");
+};
+
+// CREATES BLOCKS
+let createBlocks = () => {
+  let i = 0;
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 7; col++) {
+      let block = new Block({
+        x: col * 170 + 160,
+        y: row * 100 + 100,
+        blockThatGotHit,
+        removeBlock,
+        blockId: i + 1,
+        ball,
+      });
+      blocks.push(block);
+    }
+  }
 };
 
 // CREATE POINTS AND START BUTTON
@@ -73,53 +92,81 @@ resetBtn.className = "resetBtn";
 document.body.append(resetBtn);
 
 // CREATE ASSETS
-const blocks = [];
+let blocks = [];
 let ball = new Ball({ getOverlappingPlayer });
 let player = new Player();
 
-// CREATES BLOCKS
-let i = 0;
-for (let row = 0; row < 3; row++) {
-  for (let col = 0; col < 7; col++) {
-    let block = new Block({
-      x: col * 170 + 160,
-      y: row * 100 + 100,
-      blockThatGotHit,
-      removeBlock,
-      blockId: i + 1,
-      ball,
-    });
-    blocks.push(block);
-  }
-}
-// let ballElem = document.querySelectorAll(".ball");
+var interval = {
+  // to keep a reference to all the intervals
+  intervals: new Set(),
 
-// run update function on on start
-startBtn.addEventListener("click", () => {
-  // const myint = setInterval(update, 20);
+  // create another interval
+  make(...args) {
+    var newInterval = setInterval(...args);
+    this.intervals.add(newInterval);
+    return newInterval;
+  },
 
-  resetBtn.addEventListener("click", () => {
-    // checkLoser(myint);
-    points = 0;
-    pointsEl.innerText = points;
-    console.log(points);
-    // ball.remove();
-    // ball = null;
+  // clear a single interval
+  clear(id) {
+    this.intervals.delete(id);
+    return clearInterval(id);
+  },
 
-    // console.log(ballElem, "here");
-    document.querySelector(".ball").remove();
+  // clear all intervals
+  clearAll() {
+    this.intervals.clear();
+  },
+};
 
-    ball = new Ball({ getOverlappingPlayer });
+let resetGame = () => {
+  //clear interval
+  clearInterval(myint);
+  // interval.clearAll();
+  // reset points
+  points = 0;
+  pointsEl.innerText = points;
 
-    // player.remove();
-    document.querySelector(".player").remove();
-    player = new Player();
+  // reset ball
+  document.querySelectorAll(".ball").forEach((e) => e.remove());
+  ball = new Ball({ getOverlappingPlayer });
+
+  // reset player
+  document.querySelectorAll(".player").forEach((e) => e.remove());
+  player = new Player();
+
+  // reset blocks
+  document.querySelectorAll("block").forEach((e) => {
+    e.remove();
   });
-  setInterval(update, 20);
+  blocks.forEach((block) => block.remove());
+
+  blocks = [];
+
+  createBlocks();
+};
+
+// createBlocks();
+let myint;
+// ON START
+startBtn.addEventListener("click", () => {
+  clearInterval(myint);
+  resetGame();
+  myint = setInterval(update, 20);
+
+  // interval.clearAll();
+
+  // resetBtn.addEventListener("click", () => {
+  //   clearInterval(myint);
+  //   resetGame();
+  // });
+  // run update function
+  // createBlocks();
 });
 
 let checkLoser = () => {
   if (ball.y > window.innerHeight) {
+    resetGame();
     return true;
   } else {
     return false;
@@ -136,7 +183,7 @@ let checkWinner = () => {
 
 // MAIN GAME UPDATES
 const update = () => {
-  console.log(points);
+  // console.log(blocks);
   if (checkLoser()) {
     pointsEl.innerText = `GAME OVER, YOU LOSE!`;
     pointsEl.className = "loser";

@@ -18,7 +18,7 @@ export class Block extends Entity {
   update() {
     const block = this.blockThatGotHit();
     if (block) {
-      // console.log(this.ball.direction, "HERE");
+      console.log(block, "HERE");
       // bottom of block
       if (
         this.ball.direction === "up" ||
